@@ -1,0 +1,32 @@
+{% load static heroicons tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <title>Employee Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="flex flex-col items-center w-screen max-h-screen overflow-x-hidden">
+    <header class="w-full flex top-0 z-50 fixed items-center justify-around gap-4 py-4 px-[10%]">
+      <a href="{% url 'landing:index-view' %}" style="font-variant: small-caps;" class="text-lg text-cyan-400"><span class="text-xl text-cyan-800">cs</span>plus</a>
+
+      <nav class="grow h-full flex items-center justify-center gap-4 text-sm text-cyan-300 leading-3 capitalize">
+        <a href="{% url 'landing:about-view' %}" class="pb-1.5 relative flex justify-center before:absolute before:bottom-0 before:w-4/6 before:h-0.5 before:bg-cyan-500">about us</a>
+        <a href="{% url 'landing:contact-view' %}" class="pb-1.5 relative flex justify-center before:absolute before:bottom-0 before:w-4/6 before:h-0.5 before:bg-cyan-500">contact us</a>
+      </nav>
+
+      <a href="#" style="font-variant: small-caps;" class="px-6 py-0.5 text-sm rounded-full bg-cyan-600 text-white flex items-center justify-center gap-1">log in</a>
+    </header>
+
+    <main class="grow w-full flex flex-col gap-10">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+  </body>
+  {% block script %}
+
+  {% endblock %}
+</html>
