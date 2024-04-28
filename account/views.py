@@ -1,4 +1,5 @@
 from . import forms
+from student.forms import EnrollmentForm
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
 
@@ -10,10 +11,11 @@ def signout_view(request):
 
 def signup_view(request):
     if request.method == "POST":
-        form = forms.SignupForm(request.POST)
+        form = EnrollmentForm(request.POST)
 
         if form.is_valid() and form.save():
-            messages.success(request, "Account created successfully")
+            messages.success(request, "You have succes requested for enrollment")
+            messages.success(request, "Keep an eye for an email update")
             return redirect("account:signin-view")
 
         [messages.error(request, i[0]) for i in form.errors.values()]

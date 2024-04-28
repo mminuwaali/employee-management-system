@@ -1,0 +1,369 @@
+{% extends 'employee.html' %}
+{% load heroicons %}
+
+{% block content %}
+  <section class="w-full flex items-center justify-between">
+    <div class=""></div>
+    <button id="open-request" style="font-variant: small-caps;" class="px-6 py-1 rounded bg-cyan-600 text-white text-sm">request a leave</button>
+  </section>
+
+  <section class="container">
+    <table class="text-left w-full">
+      <thead class="bg-cyan-800 flex items-center rounded-md text-white w-full mb-2">
+        <tr class="flex w-full">
+          <th class="p-3 w-1/4">One</th>
+          <th class="p-3 w-1/4">Two</th>
+          <th class="p-3 w-1/4">Three</th>
+          <th class="p-3 w-1/4">Four</th>
+        </tr>
+      </thead>
+      <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+      <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll rounded-md w-full h-[66vh]" style="scrollbar-width: none; -ms-overflow-style: none;">
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+        <tr class="flex w-full py-2 bg-gray-100 border-b border-gray-200">
+          <td class="p-4 w-1/4">Dogs</td>
+          <td class="p-4 w-1/4">Cats</td>
+          <td class="p-4 w-1/4">Birds</td>
+          <td class="p-4 w-1/4">Fish</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="modal" class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-40 backdrop-blur-md z-50 flex items-center justify-center">
+    <button id="close-request" class="absolute p-1 top-10 right-10 text-red-500 rounded-full bg-white shadow">{% heroicon_outline 'x-mark' %}</button>
+
+    <form method="post" class="w-[24rem] flex flex-col items-start gap-8 bg-white p-10 px-4">
+      {% csrf_token %}
+      <input type="hidden" name="employee" value="{{ user.employee.id }}" />
+      <div class="w-full flex flex-col items-center">
+        <h2 class="text-2xl font-bold">Leave request</h2>
+        <span class="italic text-gray-600 text-sm" style="font-variant: small-caps;">state a reason and timeframe</span>
+      </div>
+      <div class="w-full flex flex-col gap-2">
+        <div class="w-full flex gap-2">
+          <div class="grow flex flex-col items-start gap-1">
+            <label class="capitalize text-xs" for="start_date">from</label>
+            <input required name="start_date" type="date" class="w-full text-xs rounded border-gray-400" placeholder="Username" />
+          </div>
+          <div class="grow flex flex-col items-start gap-1">
+            <label class="capitalize text-xs" for="end_date">to</label>
+            <input required name="end_date" type="date" class="w-full text-xs rounded border-gray-400" placeholder="Username" />
+          </div>
+        </div>
+        <textarea required name="description" class="w-full rounded-md p-3 border-gray-400 resize-none" placeholder="Reason"></textarea>
+      </div>
+      <button class="w-full py-2 text-center font-bold bg-gray-500 hover:bg-gray-800 text-white rounded transition-all">Submit</button>
+    </form>
+  </section>
+{% endblock %}
+
+{% block script %}
+  <script>
+    const modal = document.querySelector('#modal')
+    const openBtn = document.querySelector('#open-request')
+    const closeBtn = document.querySelector('#close-request')
+    
+    openBtn.addEventListener('click', () => (modal.style.display = 'flex'))
+    closeBtn.addEventListener('click', () => (modal.style.display = 'none'))
+  </script>
+{% endblock %}

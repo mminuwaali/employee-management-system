@@ -1,5 +1,18 @@
 {% extends 'employee.html' %}
 
 {% block content %}
+  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+    <h2 class="text-3xl font-bold" style="font-variant: small-caps;">dashboard</h2>
+  </section>
 
+  <section class="w-full flex flex-wrap gap-10 justify-between items-center">
+    <div class="basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4"></div>
+    <div class="basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4"></div>
+    <div class="basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4"></div>
+  </section>
+
+  <section class="w-full flex gap-10">
+    <div class="aspect-1 basis-72 shadow-md"></div>
+    <div class="grow"></div>
+  </section>
 {% endblock %}

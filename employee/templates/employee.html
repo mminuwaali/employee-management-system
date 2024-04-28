@@ -8,7 +8,25 @@
     <title>Dashboard | Employee</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <body class="flex flex-col items-center w-screen max-h-screen"></body>
+  <body class="flex items-center w-screen h-screen bg-slate-50">
+    <aside class="flex flex-col items-center gap-6 h-full w-16 rounded-lg bg-white shadow-md py-6">
+      <a href="{% url 'employee:index-view' %}" style="font-variant: small-caps;" class="text-sm text-cyan-400"><span class="text-md text-cyan-800">cs</span>plus</a>
+
+      <nav class="grow flex flex-col gap-2 items-center justify-start px-2.5 w-full">
+        <a href="{% url 'employee:index-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75">{% heroicon_outline 'home' %}</a>
+        <a href="{% url 'employee:attendance-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75">{% heroicon_outline 'clock' %}</a>
+        <a href="{% url 'employee:leave-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75">{% heroicon_outline 'pencil-square' %}</a>
+      </nav>
+
+      <a href="{% url 'account:signout-view' %}" class="w-4/6 aspect-1 bg-red-400 transition-all hover:bg-red-600 text-white rounded-md flex items-center justify-center">{% heroicon_outline 'arrow-left-start-on-rectangle' %}</a>
+    </aside>
+
+    <main class="h-full flex flex-col justify-start gap-10 grow overflow-auto p-10 relative">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+  </body>
   {% block script %}
 
   {% endblock %}
