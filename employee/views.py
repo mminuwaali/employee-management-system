@@ -1,9 +1,8 @@
 from . import forms, models
 from django.contrib import messages
-from account.forms import ProfileForm
 from django.utils.timezone import datetime
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserChangeForm
+from account.forms import ProfileForm, UserForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
@@ -71,7 +70,7 @@ def attendance_view(request):
 @login_required
 @user_passes_test(lambda user: user.groups.filter(name="employee").exists())
 def profile_view(request):
-    form_classes = {"user": UserChangeForm, "profile": ProfileForm}
+    form_classes = {"user": UserForm, "profile": ProfileForm}
 
     if request.method == "POST":
         type = request.POST.get("type")

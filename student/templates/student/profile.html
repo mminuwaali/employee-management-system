@@ -1,0 +1,107 @@
+{% extends 'student.html' %}
+
+{% block content %}
+  <section class="w-full">
+    <form action="" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="type" value="user" />
+      <div class="w-full aspect-5 relative rounded-md bg-cyan-600 flex flex-col items-center justify-end pt-4 px-4">
+        <div class="flex-none w-full bg-white bg-opacity-50 mb-auto rounded-md flex flex-col p-2">
+          <div class="w-full flex items-center justify-between gap-4">
+            <div class="flex flex-col items-start grow">
+              <label for="first_name" class="text-xs" style="font-variant: small-caps;">first name</label>
+              <input name="first_name" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.first_name }}" />
+            </div>
+
+            <div class="flex flex-col items-start grow">
+              <label for="last_name" class="text-xs" style="font-variant: small-caps;">last name</label>
+              <input name="last_name" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.last_name }}" />
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute w-40 h-40 shadow-lg rounded-full bg-white translate-y-1/2 flex items-center justify-center">
+          {% comment %} <input id="image-input" type="file" class="w-full h-full rounded-full opacity-0 cursor-pointer" accept="image/*" onchange="loadImage(event)" /> {% endcomment %}
+          <img id="image-output" src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% endif %}" alt="" class="absolute w-5/6 h-5/6 object-cover bg-black rounded-full pointer-events-none" />
+        </div>
+        <button style="font-variant: small-caps;" class="px-6 py-1 ml-auto rounded text-xs text-white shadow-md bg-cyan-900 mb-4">update user data</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="mt-20 w-full shadow-md rounded-md p-4">
+    <form action="" method="post" class="w-full flex flex-col gap-4" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" name="type" value="profile" />
+      <div class="w-full content-start gap-4 grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
+        <div class="flex flex-col items-start">
+          <label for="date_of_birth" class="text-xs" style="font-variant: small-caps;">date of birth</label>
+          <input name="date_of_birth" type="date" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.date_of_birth|date:'Y-m-d' }}" />
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="blood_group" class="text-xs" style="font-variant: small-caps;">blood group</label>
+          <input name="blood_group" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.blood_group }}" />
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="nationality" class="text-xs" style="font-variant: small-caps;">nationality</label>
+          <input name="nationality" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.nationality }}" />
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="phone_number" class="text-xs" style="font-variant: small-caps;">phone number</label>
+          <input name="phone_number" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.phone_number }}" />
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="emergency_contact" class="text-xs" style="font-variant: small-caps;">emergency contact</label>
+          <input name="emergency_contact" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.emergency_contact }}" />
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="gender" class="text-xs" style="font-variant: small-caps;">gender</label>
+          <select name="gender" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.gender }}">
+            {% for gender in user.profile.gender_choice %}
+              <option value="{{ gender }}">{{ gender }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="marital_status" class="text-xs" style="font-variant: small-caps;">marital status</label>
+          <select name="marital_status" type="text" class="w-full p-2 rounded border border-slate-200" value="{{ user.profile.marital_status }}">
+            {% for status in user.profile.marital_status_choice %}
+              <option value="{{ status }}">{{ status }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="flex flex-col items-start">
+          <label for="profile_picture" class="text-xs" style="font-variant: small-caps;">profile picture</label>
+          <input name="profile_picture" type="file" accept="image/*" class="w-full p-2 rounded border border-slate-200" onchange="loadImage(event)" />
+          {% if user.profile.profile_picture %}
+            <a href="{{ user.profile.profile_picture.url }}" target="_blank" class="text-xs text-green-300">current: {{ user.profile.profile_picture }}</a>
+          {% endif %}
+        </div>
+      </div>
+      <button style="font-variant: small-caps;" class="px-6 py-1 ml-auto rounded text-xs text-white shadow-md bg-cyan-900">update profile</button>
+    </form>
+  </section>
+{% endblock %}
+
+{% block script %}
+  <script>
+    function loadImage(event) {
+      const imageOutput = document.querySelector('#image-output')
+      const file = event.target.files[0]
+      const reader = new FileReader()
+    
+      reader.onload = function (e) {
+        imageOutput.src = e.target.result
+      }
+    
+      reader.readAsDataURL(file)
+    }
+  </script>
+{% endblock %}

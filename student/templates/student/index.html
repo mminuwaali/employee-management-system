@@ -1,5 +1,62 @@
 {% extends 'student.html' %}
 
 {% block content %}
+  <section class="w-full h-full flex gap-10">
+    <div class="h-full text-xs flex flex-col gap-4 p-4 px-8 basis-40 grow shadow overflow-auto" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <div class="w-full flex flex-col gap-2 items-center border-b border-b-slate-400 pb-4">
+        {% if user.profile.profile_picture %}
+          <img src="{{ user.profile.profile_picture.url }}" alt="" class="w-32 aspect-1 rounded-full" />
+        {% else %}
+          <div class="w-32 aspect-1 flex-none rounded-full from-cyan-200 to-cyan-800 bg-gradient-to-tr"></div>
+        {% endif %}
 
+        <div class="mt-4 text-center capitalize text-lg">{{ user.get_full_name }}</div>
+      </div>
+
+      <div class="w-full flex flex-col gap-2 items-center border-b border-b-slate-400 pb-4">
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">address</span>
+          <span class="text-slate-600">{{ user.profile.address }}</span>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">date of birth</span>
+          <span class="text-slate-600">{{ user.profile.date_of_birth }}</span>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col gap-2 items-center border-b border-b-slate-400 pb-4">
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">nationality</span>
+          <span class="text-slate-600">{{ user.profile.nationality }}</span>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">address</span>
+          <span class="text-slate-600">{{ user.profile.address }}</span>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">blood group</span>
+          <span class="text-slate-600">{{ user.profile.blood_group }}</span>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">phone number</span>
+          <span class="text-slate-600">{{ user.profile.phone_number }}</span>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">gender</span>
+          <span class="text-slate-600">{{ user.profile.gender }}</span>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <span class="font-semibold capitalize">emergency contact</span>
+          <span class="text-slate-600">{{ user.profile.emergency_contact }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="h-full flex flex-col gap-4 p-4 basis-80 grow-[2] shadow-md"></div>
+  </section>
 {% endblock %}
