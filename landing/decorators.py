@@ -9,6 +9,10 @@ def role_required(function):
             if user.is_superuser or user.is_staff:  # admin or staff
                 return redirect("admin:index")  # redirect to admin panel
 
+            group = user.groups.first()
+            if group:
+                return redirect(f"{group.name}:index-view")
+
         return function(request, *args, **kwargs)
 
     return wrap

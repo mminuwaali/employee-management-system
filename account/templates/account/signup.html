@@ -12,10 +12,11 @@
       <input required name="last_name" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Last name" />
       <input required name="username" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Username" />
       <input required name="email" type="email" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Email" />
-
-      <input required name="phone_number" type="tel" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Phone Number" />
-      <input required name="password1" type="password" class="grow basis-40 rounded-md px-4 py-2 border-gray-400 text-sm" placeholder="Password" />
-      <input required name="password2" type="password" class="grow basis-40 rounded-md px-4 py-2 border-gray-400 text-sm" placeholder="Repeat password" />
+      
+      <input required name="department" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Department" />
+      {% comment %} <input required name="phone_number" type="tel" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Phone Number" /> {% endcomment %}
+      {% comment %} <input required name="password1" type="password" class="grow basis-40 rounded-md px-4 py-2 border-gray-400 text-sm" placeholder="Password" /> {% endcomment %}
+      {% comment %} <input required name="password2" type="password" class="grow basis-40 rounded-md px-4 py-2 border-gray-400 text-sm" placeholder="Repeat password" /> {% endcomment %}
     </div>
     <button class="w-full py-2 text-center font-bold bg-gray-500 hover:bg-gray-800 text-white rounded transition-all">Submit</button>
     <span class="font-semibold text-xs">Got an account? <a href="{% url 'account:signin-view' %}" class="underline">Login here</a></span>

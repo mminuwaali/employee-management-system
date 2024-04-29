@@ -1,0 +1,40 @@
+{% load heroicons %}
+
+<header class="w-11/12 md:w-4/6 p-4 flex items-center justify-between gap-4 px-[6%] backdrop-blur-md bg-white bg-opacity-70 border-b border-b-blue-400 fixed top-2 md:top-10 rounded-md z-50">
+  <a href="{% url 'landing:index-view' %}" class=""><span class="text-xl text-blue-800 font-bold">E</span>script</a>
+
+  <nav id="menu" class="flex flex-col md:flex-row text-xs md:text-base w-0 md:w-full whitespace-nowrap items-start md:items-center justify-start md:justify-center gap-4 absolute md:relative top-20 md:top-auto right-4 md:right-auto bg-white md:bg-transparent py-2 z-50 overflow-hidden transition-all" style="font-variant: small-caps;">
+    <a href="{% url 'landing:about-view' %}" class="transition-all hover:text-blue-800">about us</a>
+    <a href="{% url 'landing:contact-view' %}" class="transition-all hover:text-blue-800">contact us</a>
+  </nav>
+
+  <nav class="ml-auto flex items-center justify-center text-xs md:text-sm font-semibold text-blue-500" style="font-variant: small-caps;">
+    {% if user.is_authenticated %}
+      <a href="{% url 'account:signout-view' %}" class="ml-4 px-5 py-0.5 hover:bg-blue-600 transition-all text-white bg-blue-400 rounded text-center text-sm font-semibold shadow-md">logout</a>
+    {% else %}
+      <a href="{% url 'account:signin-view' %}" class="transition-all hover:text-blue-800">login</a>
+      <a href="{% url 'account:signup-view' %}" class="ml-4 px-5 py-0.5 hover:bg-blue-600 transition-all text-white bg-blue-400 rounded text-center text-sm font-semibold shadow-md">register</a>
+    {% endif %}
+  </nav>
+
+  <button id="menu-btn" class="w-6 h-6 md:hidden">{% heroicon_outline 'bars-2' %}</button>
+
+  <script>
+    let width = 0
+    const url = location.href
+    const menu = document.querySelector('#menu')
+    const menuBtn = document.querySelector('#menu-btn')
+    const navLinks = document.querySelectorAll('header nav a')
+    
+    menuBtn.addEventListener('click', () => {
+      width = width == 0 ? 200 : 0
+    
+      menu.style.width = width + 'px'
+      menu.style.paddingInline = width * 0.1 + 'px'
+    })
+    
+    navLinks.forEach((link) => {
+      if (link.href === url) link.classList.add('text-blue-600')
+    })
+  </script>
+</header>

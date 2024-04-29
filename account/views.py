@@ -1,4 +1,5 @@
-from . import forms
+from . import forms, models
+from django.db.models import Q
 from student.forms import EnrollmentForm
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
@@ -11,6 +12,13 @@ def signout_view(request):
 
 def signup_view(request):
     if request.method == "POST":
+        if models.User.objects.filter(
+            Q(email=request.POST.get("email"))
+            | Q(username=request.POST.get("username"))
+        ).exists():
+            messages.warning(
+                request, "A user with the same email or username already exists"
+            )
         form = EnrollmentForm(request.POST)
 
         if form.is_valid() and form.save():
@@ -32,7 +40,7 @@ def signin_view(request):
             password=request.POST.get("password"),
         )
 
-        if user:
+        if user and user.groups.count():
             auth.login(request, user)
             return redirect("landing:index-view")
 

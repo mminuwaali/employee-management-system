@@ -1,18 +1,108 @@
 {% extends 'employee.html' %}
 
 {% block content %}
-  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+  <section class="w-full rounded-md bg-cyan-600 p-10 py-6 flex items-center justify-between text-white shadow-md">
     <h2 class="text-3xl font-bold" style="font-variant: small-caps;">dashboard</h2>
+    <div class="flex flex-col gap-2 items-end">
+      {% if user.profile.profile_picture %}
+        <div class="w-20 h-20 flex-none rounded-full flex items-center justify-center p-2">
+          <img src="{{ user.profile.profile_picture.url }}" alt="" class="w-full h-full rounded-full bg-cyan-900" />
+        </div>
+      {% endif %}
+
+      <form action="" method="post">
+        {% csrf_token %}
+        {% if not attendance_today %}
+          <button class="px-6 py-1 text-xs text-white bg-cyan-900 rounded-md">sign in</button>
+        {% elif not attendance_today.has_ended %}
+          <button class="px-6 py-1 text-xs text-white bg-cyan-900 rounded-md">sign out</button>
+        {% endif %}
+      </form>
+    </div>
   </section>
 
   <section class="w-full flex flex-wrap gap-10 justify-between items-center">
-    <div class="basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4"></div>
-    <div class="basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4"></div>
-    <div class="basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4"></div>
+    <div class="text-white basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4 flex items-center justify-between">
+      <span class="font-bold capitalize text-lg">attendance</span>
+      <b>{{ attendances.count }}</b>
+    </div>
+    <div class="text-white basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4 flex items-center justify-between">
+      <span class="font-bold capitalize text-lg">approved leaves</span>
+      <b>{{ leaves.count }}</b>
+    </div>
+    <div class="text-white basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4 flex items-center justify-between">
+      <span class="font-bold capitalize text-lg">performance</span>
+      <b>0</b>
+    </div>
   </section>
 
   <section class="w-full flex gap-10">
-    <div class="aspect-1 basis-72 shadow-md"></div>
-    <div class="grow"></div>
+    <div class="grow content-start flex flex-wrap gap-12">
+      <div class="flex flex-col basis-[26rem] grow">
+        <h2 style="font-variant: small-caps;" class="lowercase mb-2 text-left text-lg">personal information</h2>
+        <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">first name</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.first_name }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">last name</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.last_name }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">email</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.email }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">username</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.username }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col basis-[26rem] grow">
+        <h2 style="font-variant: small-caps;" class="lowercase mb-2 text-left text-lg">additional information</h2>
+        <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">nationality</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.profile.nationality }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">date of birth</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.profile.date_of_birth }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">blood group</span>
+            <span class="text-sm uppercase text-slate-600">{{ user.profile.blood_group }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">phone number</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.profile.phone_number }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col basis-[26rem] grow">
+        <h2 style="font-variant: small-caps;" class="lowercase mb-2 text-left text-lg">proffession information</h2>
+        <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">date joined</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.employee.date_joined }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">position</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.employee.position }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">department</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.employee.department }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">monthly salary</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.employee.salary_value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 {% endblock %}

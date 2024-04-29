@@ -16,6 +16,7 @@
         <a href="{% url 'employee:index-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75">{% heroicon_outline 'home' %}</a>
         <a href="{% url 'employee:attendance-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75">{% heroicon_outline 'clock' %}</a>
         <a href="{% url 'employee:leave-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75">{% heroicon_outline 'pencil-square' %}</a>
+        <a href="{% url 'employee:profile-view' %}" class="w-full aspect-1 bg-cyan-200 transition-all hover:bg-cyan-500 hover:scale-100 text-white rounded-md flex items-center justify-center scale-75 mt-auto">{% heroicon_outline 'user-circle' %}</a>
       </nav>
 
       <a href="{% url 'account:signout-view' %}" class="w-4/6 aspect-1 bg-red-400 transition-all hover:bg-red-600 text-white rounded-md flex items-center justify-center">{% heroicon_outline 'arrow-left-start-on-rectangle' %}</a>
@@ -26,6 +27,7 @@
 
       {% endblock %}
     </main>
+    {% include 'components/messages.html' %}
   </body>
   {% block script %}
 

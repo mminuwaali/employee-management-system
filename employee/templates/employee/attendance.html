@@ -1,11 +1,22 @@
 {% extends 'employee.html' %}
 
 {% block content %}
+  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+    <h2 class="text-3xl font-bold" style="font-variant: small-caps;">attendance</h2>
+    <span class="text-lg font-bold">{{ attendances.count }}</span>
+  </section>
+  
   <section class="w-full grid gap-10 px-[4%] grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
-    {% for _ in '1234567890' %}
+    {% for attendance in attendances %}
       <div class="h-10 rounded-md p-2 shadow-md flex items-center justify-start gap-2">
-        <span class="text-xs font-bold text-slate-500">12 10, 2020</span>
-        <i class="{% cycle 'text-green-400' 'text-red-400' 'text-red-400' %} ml-auto text-xs font-bold" style="font-variant: small-caps;">present</i>
+        <span class="text-xs font-bold text-slate-500">{{ attendance.created_at|date:'M d, Y' }}</span>
+        <i class="ml-auto text-xs font-bold">
+          from: {{ attendance.check_in|date:'H:i a' }} - to:{% if attendance.has_ended %}
+            ---
+          {% else %}
+            {{ attendance.check_out|date:'H:i a' }}
+          {% endif %}
+        </i>
       </div>
     {% endfor %}
   </section>

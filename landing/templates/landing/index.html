@@ -2,41 +2,40 @@
 {% load static %}
 
 {% block content %}
-  <section class="w-full aspect-[2.3] flex flex-col bg-cover bg-center relative">
+  <section class="w-full relative aspect-[2.4] min-h-96 bg-slate-700">
     <img src="{% static 'banner.jpg' %}" alt="" class="absolute w-full h-full object-cover brightness-75" />
+
+    <div class="w-full h-full font-bold relative flex flex-col items-center justify-end gap-2 p-[10%] pb-[12%] text-white">
+      <h3 class="text-xl md:text-3xl capitalize">csplus management company</h3>
+      <h2 class="text-2xl md:text-5xl uppercase">get the most of education</h2>
+    </div>
   </section>
 
   <section class="w-full px-20 gap-4 grid grid-cols-[repeat(auto-fit,minmax(30rem,1fr))]">
     <div class="bg-black h-96 relative">
       <img src="{% static 'banner.jpg' %}" alt="" class="w-full h-full object-cover absolute" />
     </div>
-    <div class="p-4 flex flex-col gap-2 items-start h-96">
+    <div class="p-4 flex flex-col gap-2 items-start justify-start h-96">
       <span class="text-cyan-600 font-semibold uppercase">about us</span>
-      <h3 class="text-3xl font-bold capitalize">we produce organic foods and products</h3>
-      <p class="text-sm text-slate-600 grow mt-6">
-        {% lorem 1 b %}
+      <h3 class="text-3xl font-bold capitalize">we are the future</h3>
+      <p class="text-sm text-slate-600 grow bg-black">
+        {% lorem 1 p %}
       </p>
     </div>
   </section>
 
   <section class="w-full flex flex-wrap justify-center px-[5%] p-2">
     <div class="basis-96 flex flex-col p-10 items-start gap-2 text-white bg-cyan-800">
-      <h2 class="text-2xl capitalize font-semibold">Lorem, ipsum dolor.</h2>
-      <p class="text-sm leading-4">
-        {% lorem 16 w %}
-      </p>
+      <h2 class="text-2xl capitalize font-semibold">Robust</h2>
+      <p class="text-sm leading-4">Your project-specific content here...</p>
     </div>
     <div class="basis-96 flex flex-col p-10 items-start gap-2 text-white bg-cyan-600">
-      <h2 class="text-2xl capitalize font-semibold">Lorem, ipsum dolor.</h2>
-      <p class="text-sm leading-4">
-        {% lorem 16 w %}
-      </p>
+      <h2 class="text-2xl capitalize font-semibold">Efficient</h2>
+      <p class="text-sm leading-4">Your project-specific content here...</p>
     </div>
     <div class="basis-96 flex flex-col p-10 items-start gap-2 text-white bg-cyan-400">
-      <h2 class="text-2xl capitalize font-semibold">Lorem, ipsum dolor.</h2>
-      <p class="text-sm leading-4">
-        {% lorem 16 w %}
-      </p>
+      <h2 class="text-2xl capitalize font-semibold">Reliable</h2>
+      <p class="text-sm leading-4">Your project-specific content here...</p>
     </div>
   </section>
 {% endblock %}
