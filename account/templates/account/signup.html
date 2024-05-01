@@ -12,8 +12,13 @@
       <input required name="last_name" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Last name" />
       <input required name="username" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Username" />
       <input required name="email" type="email" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Email" />
-      
+
       <input required name="department" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Department" />
+      <select required name="course" type="text" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Department">
+        {% for course in courses %}
+          <option value="{{ course.id }}">{{ course.name }}</option>
+        {% endfor %}
+      </select>
       {% comment %} <input required name="phone_number" type="tel" class="grow basis-40 rounded-md px-4 py-2 border-gray-400" placeholder="Phone Number" /> {% endcomment %}
       {% comment %} <input required name="password1" type="password" class="grow basis-40 rounded-md px-4 py-2 border-gray-400 text-sm" placeholder="Password" /> {% endcomment %}
       {% comment %} <input required name="password2" type="password" class="grow basis-40 rounded-md px-4 py-2 border-gray-400 text-sm" placeholder="Repeat password" /> {% endcomment %}

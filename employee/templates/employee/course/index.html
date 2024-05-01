@@ -1,0 +1,17 @@
+{% extends 'employee.html' %}
+
+{% block content %}
+  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+    <h2 class="text-3xl font-bold" style="font-variant: small-caps;">rooms</h2>
+    <span class="text-lg font-bold">{{ rooms.count }}</span>
+  </section>
+
+  <section class="w-full grid gap-10 px-[4%] grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
+    {% for room in rooms %}
+      <a href="{% url 'employee:course-detail-view' room.id %}" class="h-10 rounded-md p-2 shadow-md flex items-center justify-between gap-2 px-4">
+        <span class="text-xs font-bold text-slate-500">Course: {{ room.course.name }}</span>
+        <i class="text-xs font-bold text-slate-500">students: {{ room.students.count }}</i>
+      </a>
+    {% endfor %}
+  </section>
+{% endblock %}

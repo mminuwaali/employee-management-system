@@ -29,30 +29,33 @@ class Employee(models.Model):
 
 class Attendance(models.Model):
     check_out = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
     check_in = models.DateTimeField(auto_now_add=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(null=True, blank=True)
     employee = models.ForeignKey(
         Employee, models.CASCADE, limit_choices_to={"user__groups__name": "employee"}
     )
 
     @property
     def has_ended(self):
-        print(self.check_in.second, self.check_out.second, self.check_in.second != self.check_out.second)
+        print(
+            self.check_in.second,
+            self.check_out.second,
+            self.check_in.second != self.check_out.second,
+        )
         return self.check_in.second != self.check_out.second
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["-check_in"]
 
 
 class Leave(models.Model):
     end_date = models.DateField()
     start_date = models.DateField()
-    reason = models.TextField(default="")
-    description = models.TextField(default="")
     updated_at = models.DateTimeField(auto_now=True)
+    reason = models.TextField(default="", blank=True)
     status = models.BooleanField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(default="", blank=True)
     employee = models.ForeignKey(
         Employee, models.CASCADE, limit_choices_to={"user__groups__name": "employee"}
     )
@@ -65,6 +68,20 @@ class Leave(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+
+
+class ClassRoom(models.Model):
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    employee = models.ForeignKey(Employee, models.PROTECT)
+    course = models.ForeignKey("landing.course", models.PROTECT)
+    students = models.ManyToManyField("student.student", blank=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.employee.user.username} - {self.id}"
 
 
 # class PerformanceEvaluation(models.Model):

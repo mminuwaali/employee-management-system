@@ -1,5 +1,7 @@
 from . import models, forms
 from django.contrib import messages
+from employee.models import ClassRoom
+from django.utils.timezone import datetime
 from django.shortcuts import render, redirect
 from account.forms import ProfileForm, UserForm
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -8,7 +10,23 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 @login_required
 @user_passes_test(lambda user: user.groups.filter(name="student").exists())
 def index_view(request):
-    return render(request, "student/index.html")
+    attendance_today = models.Attendance.objects.filter(
+        student__user=request.user, check_in__date=datetime.today()
+    ).first()
+
+    print(request.user.student.classroom.all())
+
+    if request.method == "POST":
+        if attendance_today:
+            attendance_today.save()
+        else:
+            models.Attendance.objects.create(student=request.user.student)
+
+        messages.success(request, "Attendance marked successfully")
+        return redirect("student:index-view")
+
+    context = {"attendance_today": attendance_today}
+    return render(request, "student/index.html", context)
 
 
 @login_required

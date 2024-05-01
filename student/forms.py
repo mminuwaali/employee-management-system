@@ -11,4 +11,4 @@ class AttendanceForm(forms.ModelForm):
 class EnrollmentForm(forms.ModelForm):
     class Meta:
         model = models.Enrollment
-        fields = ["email", "username", "last_name", "first_name"]
+        fields = ["email", "username", "last_name", "first_name", "department", "course"]

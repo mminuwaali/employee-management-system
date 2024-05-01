@@ -16,5 +16,11 @@ class AttendanceAdmin(admin.ModelAdmin):
 
 @admin.register(models.Leave)
 class LeaveAdmin(admin.ModelAdmin):
-    list_filter = ['employee', 'status']
-    list_display = ['employee', 'status', 'start_date', 'end_date']
+    list_filter = ["employee", "status"]
+    list_display = ["employee", "status", "start_date", "end_date"]
+
+
+@admin.register(models.ClassRoom)
+class ClassRoomAdmin(admin.ModelAdmin):
+    list_filter = ["course", "employee"]
+    list_display = ["course", "employee"]

@@ -12,14 +12,14 @@ def index_view(request):
     attendances = models.Attendance.objects.filter(employee__user=request.user)
     leaves = models.Leave.objects.filter(employee__user=request.user, status=True)
 
-    attendance_today = attendances.filter(created_at__date=datetime.today()).first()
+    attendance_today = attendances.filter(check_in__date=datetime.today()).first()
 
     if request.method == "POST":
         if attendance_today:
             attendance_today.save()
         else:
             models.Attendance.objects.create(employee=request.user.employee)
-        
+
         messages.success(request, "Attendance marked successfully")
         return redirect("employee:index-view")
 
@@ -90,3 +90,21 @@ def profile_view(request):
             return redirect("employee:profile-view")
 
     return render(request, "employee/profile.html")
+
+
+@login_required
+@user_passes_test(lambda user: user.groups.filter(name="employee").exists())
+def room_view(request):
+    rooms = models.ClassRoom.objects.filter(employee__user=request.user)
+
+    context = {"rooms": rooms}
+    return render(request, "employee/course/index.html", context)
+
+
+@login_required
+@user_passes_test(lambda user: user.groups.filter(name="employee").exists())
+def room_detail_view(request, id):
+    room = models.ClassRoom.objects.get(id=id)
+
+    context = {"room": room}
+    return render(request, "employee/course/detail.html", context)

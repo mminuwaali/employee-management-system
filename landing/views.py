@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from django.contrib import messages
 from account.forms import ContactForm
 from .decorators import role_required
+from django.shortcuts import render, redirect
 
 
 @role_required

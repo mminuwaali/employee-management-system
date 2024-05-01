@@ -1,5 +1,6 @@
 from . import forms, models
 from django.db.models import Q
+from landing.models import Course
 from student.forms import EnrollmentForm
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
@@ -29,7 +30,10 @@ def signup_view(request):
         [messages.error(request, i[0]) for i in form.errors.values()]
         return redirect("account:signup-view")
 
-    return render(request, "account/signup.html")
+    courses = Course.objects.all()
+
+    context = {"courses": courses}
+    return render(request, "account/signup.html", context)
 
 
 def signin_view(request):

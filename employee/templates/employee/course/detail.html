@@ -1,0 +1,89 @@
+{% extends 'employee.html' %}
+
+{% block content %}
+  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+    <h2 class="text-3xl font-bold lowercase" style="font-variant: small-caps;">room of {{ room.course.name }}</h2>
+    {% comment %} <span class="text-lg font-bold">{{ rooms.count }}</span> {% endcomment %}
+  </section>
+
+  <section class="w-full flex gap-10">
+    <div class="grow content-start flex flex-wrap gap-12">
+      <div class="flex flex-col basis-[26rem] grow">
+        <h2 style="font-variant: small-caps;" class="lowercase mb-2 text-left text-lg">students</h2>
+        <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+          {% for student in room.students.all %}
+            <div class="shadow p-4 rounded-md flex items-center gap-4">
+              {% if student.user.profile.profile_picture %}
+                <img src="{{ student.user.profile.profile_picture.url }}" alt="" class="w-12 rounded-full aspect-1 flex-none" />
+              {% else %}
+                <div class="w-12 aspect-1 rounded-full from-cyan-400 to-cyan-800 bg-gradient-to-br"></div>
+              {% endif %}
+
+              <div class="flex grow flex-col items-start text-xs gap-1 leading-3">
+                <span class="">N`ame: {{ student.user.get_full_name }}</span>
+                <span class="">Email: {{ student.user.email }}</span>
+                <span class="">Department: {{ student.department }}</span>
+                <span class="mt-2">Date joined: {{ student.date_enrolled }}</span>
+              </div>
+
+              <div class="flex flex-col text-xs gap-2">
+                <div class="flex gap-2 leading-3 items-center">
+                  <i class="capitalize text-[0.6rem]">performance:</i>
+                  <span class="">{{ student.average_performance }}%</span>
+                </div>
+                <div class="flex gap-2 leading-3 items-center">
+                  <i class="capitalize text-[0.6rem]">attendance:</i>
+                  <span class="">{{ student.average_attendance }}%</span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% comment %} <div class="flex flex-col basis-[26rem] grow">
+        <h2 style="font-variant: small-caps;" class="lowercase mb-2 text-left text-lg">additional information</h2>
+        <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">nationality</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.profile.nationality }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">date of birth</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.profile.date_of_birth }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">blood group</span>
+            <span class="text-sm uppercase text-slate-600">{{ user.profile.blood_group }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">phone number</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.profile.phone_number }}</span>
+          </div>
+        </div>
+      </div> {% endcomment %}
+
+      {% comment %} <div class="flex flex-col basis-[26rem] grow">
+        <h2 style="font-variant: small-caps;" class="lowercase mb-2 text-left text-lg">proffession information</h2>
+        <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">date joined</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.employee.date_joined }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">position</span>
+            <span class="text-sm text-slate-600 capitalize">{{ user.employee.position }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">department</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.employee.department }}</span>
+          </div>
+          <div class="shadow-md rounded-sm flex flex-col items-start gap-1 p-2">
+            <span class="text-sm" style="font-variant: small-caps;">monthly salary</span>
+            <span class="text-sm text-slate-600 lowercase">{{ user.employee.salary_value }}</span>
+          </div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+  </section>
+{% endblock %}
