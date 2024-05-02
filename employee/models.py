@@ -84,5 +84,15 @@ class ClassRoom(models.Model):
         return f"{self.employee.user.username} - {self.id}"
 
 
-# class PerformanceEvaluation(models.Model):
-#     employee = models.ForeignKey(Employee, models.CASCADE)
+class Assessment(models.Model):
+    question = models.TextField()
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    classroom = models.ForeignKey(ClassRoom, models.PROTECT)
+
+    class Meta:
+        ordering = ["-created_at"]
+        unique_together = ["question", "classroom"]
+
+    def __str__(self) -> str:
+        return self.question

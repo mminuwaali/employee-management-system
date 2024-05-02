@@ -15,7 +15,7 @@ class Student(models.Model):
     def average_attendance(self):
         attendances = self.attendance_set.filter(status=True)
         if attendances.exists():
-            average = attendances.aggregate(Avg('status'))['status__avg']
+            average = attendances.aggregate(Avg("status"))["status__avg"]
             return average * 100
         return 0
 
@@ -35,7 +35,7 @@ class Enrollment(models.Model):
     status = models.BooleanField(null=True, blank=True)
     username = models.CharField(max_length=255, unique=True)
     department = models.CharField(max_length=255, unique=True)
-    course = models.ForeignKey('landing.course', models.PROTECT, null=True, blank=True)
+    course = models.ForeignKey("landing.course", models.PROTECT, null=True, blank=True)
 
 
 class Attendance(models.Model):
@@ -45,9 +45,17 @@ class Attendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 
-# class Grade(models.Model):
-#     student = models.ForeignKey(Student, on_delete=models.CASCADE)
+class AssessmentAnswer(models.Model):
+    updated_at = models.DateTimeField(auto_now=True)
+    answer = models.TextField(blank=True, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    student = models.ForeignKey(Student, models.PROTECT)
+    assessment = models.ForeignKey("employee.assessment", models.PROTECT)
+    score = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
+    class Meta:
+        ordering = ["-created_at"]
+        unique_together = ["assessment", "student"]
 
-# class Performance(models.Model):
-#     student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    def __str__(self) -> str:
+        return f"{self.assessment.question}: {self.answer}"

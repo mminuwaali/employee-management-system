@@ -24,3 +24,10 @@ class LeaveAdmin(admin.ModelAdmin):
 class ClassRoomAdmin(admin.ModelAdmin):
     list_filter = ["course", "employee"]
     list_display = ["course", "employee"]
+
+
+@admin.register(models.Assessment)
+class AssessmentAdmin(admin.ModelAdmin):
+    list_filter = ["classroom"]
+    search_fields = ["question__startswith"]
+    list_display = ["question", "classroom", "created_at", "updated_at"]

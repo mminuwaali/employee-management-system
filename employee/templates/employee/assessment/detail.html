@@ -1,0 +1,46 @@
+{% extends 'employee.html' %}
+{% load static heroicons %}
+
+{% block content %}
+  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+    <h2 class="text-xl font-bold">Question: <span class="text-base font-normal">{{ assessment.question }}</span></h2>
+    {% if unassigned_students.count and unassigned_students.count < assessment.classroom.students.count %}
+      <form action="" method="post" class="w-80 flex flex-col items-end">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="assign" />
+        <select multiple required name="students" class="w-full h-14 text-xs rounded border-gray-400" style="scrollbar-width: none; -ms-overflow-style: none;">
+          {% for student in unassigned_students %}
+            <option value="{{ student.id }}">{{ student }}</option>
+          {% endfor %}
+        </select>
+
+        <button class="px-6 py-1 text-center font-semibold text-sm bg-gray-500 hover:bg-gray-800 text-white rounded transition-all mt-2">Assign</button>
+      </form>
+    {% endif %}
+  </section>
+
+  <section class="w-full grid gap-10 px-[4%] grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
+    {% for answer in answers %}
+      <form action="" method="post" class="p-2 rounded-md shadow-md flex flex-col gap-2">
+        {% csrf_token %}
+        <input type="hidden" name="type" value="grade" />
+        <input type="hidden" name="student" value="{{ answer.student.id }}" />
+        <div class="text-center">
+          Student: <span class="capitalize">{{ answer.student.user.get_full_name }}</span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-xs capitalize">answer</span>
+          <p class="text-justify-text-slate-600">{{ answer.answer|default:'---' }}</p>
+        </div>
+
+        <div class="grow flex flex-col items-start gap-1">
+          <label class="capitalize text-xs" for="start_date">score</label>
+          <input required name="score" type="number" min="0" max="100" value="{{ answer.score }}" class="w-full text-xs rounded border-gray-400" placeholder="Score" />
+        </div>
+
+        <button class="w-full py-1.5 text-center font-bold bg-gray-500 hover:bg-gray-800 text-white rounded transition-all mt-4">Grade</button>
+      </form>
+    {% endfor %}
+  </section>
+{% endblock %}

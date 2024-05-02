@@ -34,6 +34,14 @@ INTERNAL_IPS = ["127.0.0.1"]
 
 TAILWIND_APP_NAME = "styling"
 
+LOGIN_URL = "account:signin-view"
+
+LOGOUT_URL = "account:signout-view"
+
+LOGIN_REDIRECT_URL = "account:signin-view"
+
+LOGOUT_REDIRECT_URL = "account:signout-view"
+
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if name == "nt" else which("npm")
 
 # Application definition
