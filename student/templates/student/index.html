@@ -66,21 +66,30 @@
         </div>
       </div>
     </div>
+
     <div class="h-full flex flex-col gap-4 p-4 basis-80 grow-[2] shadow-md">
+      <div class="w-full flex flex-wrap gap-10 justify-between items-center mb-10">
+        <div class="text-white basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4 flex items-center justify-between">
+          <span class="font-bold capitalize text-lg">attendance</span>
+          <b>{{ attendances.count }}</b>
+        </div>
+        <div class="text-white basis-80 grow h-16 rounded-md from-cyan-400 to-cyan-800 bg-gradient-to-tr p-4 flex items-center justify-between">
+          <span class="font-bold capitalize text-lg">performance</span>
+          <b>{{ performance }}%</b>
+        </div>
+      </div>
+
       <div class="w-full flex flex-col gap-6 items-start">
-        <h2 class="text-lg text-slate-600 capitalize font-semibold">my courses</h2>
+        <h2 class="text-lg text-slate-600 capitalize font-semibold">my classrooms</h2>
         <div class="w-full grow grid gap-6 grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
           {{ user.student.classroom }}
-          {% for room in user.student.classroom.all %}
-            <div class="h-10 bg-black"></div>
+          {% for room in rooms %}
+            <a href="{% url 'student:room-detail-view' room.id %}" class="p-4 shadow-md">
+              <div class="text-sm font-bold text-slate-700">
+                Course: <span class="font-normal">{{ room.course.name }}</span>
+              </div>
+            </a>
           {% endfor %}
-          {% comment %} <div class="h-10 bg-black"></div>
-          <div class="h-10 bg-black"></div>
-          <div class="h-10 bg-black"></div>
-          <div class="h-10 bg-black"></div>
-          <div class="h-10 bg-black"></div>
-          <div class="h-10 bg-black"></div>
-          <div class="h-10 bg-black"></div> {% endcomment %}
         </div>
       </div>
     </div>

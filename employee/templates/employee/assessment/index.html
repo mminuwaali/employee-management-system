@@ -1,0 +1,70 @@
+{% extends 'employee.html' %}
+{% load static heroicons %}
+
+{% block content %}
+  <section class="w-full rounded-md bg-cyan-600 p-10 flex items-center justify-between text-white shadow-md">
+    <h2 class="text-3xl font-bold" style="font-variant: small-caps;">assessments</h2>
+    <div class="flex gap-4">
+      <span class="text-lg font-bold">{{ assessments.count }}</span>
+      <button id="open-request" style="font-variant: small-caps;" class="px-6 py-1 rounded bg-cyan-900 text-white text-sm">create assessment</button>
+    </div>
+  </section>
+
+  <section class="w-full grid gap-10 px-[4%] grid-cols-[repeat(auto-fill,minmax(20rem,1fr))]">
+    {% for assessment in assessments %}
+      <a href="{% url 'employee:assessment-detail-view' assessment.id %}" class="h-10 rounded-md p-2 shadow-md flex items-center justify-between gap-2 px-4">
+        <span class="text-xs font-bold text-slate-500">Question: {{ assessment.question }}</span>
+        <i class="text-xs font-bold text-slate-500">students: {{ assessment.assessmentanswer_set.count }} / {{ students.count }}</i>
+      </a>
+    {% endfor %}
+  </section>
+
+  <section id="modal" class="absolute w-full h-full top-0 left-0 bg-black bg-opacity-40 backdrop-blur-md z-50 hidden items-center justify-center">
+    <button id="close-request" class="absolute p-1 top-10 right-10 text-red-500 rounded-full bg-white shadow">{% heroicon_outline 'x-mark' %}</button>
+
+    <form method="post" class="w-[24rem] flex flex-col items-start gap-8 bg-white p-10 px-4">
+      {% csrf_token %}
+      <input type="hidden" name="employee" value="{{ user.employee.id }}" />
+      <div class="w-full flex flex-col items-center">
+        <h2 class="text-2xl font-bold">Create new assessment</h2>
+        <span class="italic text-gray-600 text-sm" style="font-variant: small-caps;">state a reason and timeframe</span>
+      </div>
+      <div class="w-full flex flex-col gap-2">
+        <div class="w-full flex gap-2">
+          <div class="grow flex flex-col items-start gap-1">
+            <label class="capitalize text-xs" for="question">question</label>
+            <input required name="question" type="text" class="w-full text-xs rounded border-gray-400" placeholder="Question" />
+          </div>
+        </div>
+        <div class="grow flex flex-col items-start gap-1">
+          <label class="capitalize text-xs" for="students">class room</label>
+          <select required name="room" class="w-full text-xs rounded border-gray-400">
+            {% for room in rooms %}
+              <option value="{{ room.id }}">{{ room }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="grow flex flex-col items-start gap-1">
+          <label class="capitalize text-xs" for="students">students</label>
+          <select multiple required name="students" class="w-full text-xs rounded border-gray-400">
+            {% for student in students %}
+              <option value="{{ student.id }}">{{ student }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <button class="w-full py-2 text-center font-bold bg-gray-500 hover:bg-gray-800 text-white rounded transition-all">Submit</button>
+    </form>
+  </section>
+{% endblock %}
+
+{% block script %}
+  <script>
+    const modal = document.querySelector('#modal')
+    const openBtn = document.querySelector('#open-request')
+    const closeBtn = document.querySelector('#close-request')
+    
+    openBtn.addEventListener('click', () => (modal.style.display = 'flex'))
+    closeBtn.addEventListener('click', () => (modal.style.display = 'none'))
+  </script>
+{% endblock %}
